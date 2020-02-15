@@ -16,7 +16,7 @@ meal_type_(meal_type) {
     case MealType::Dinner: {
       calories_needed_ = 800;
     } break;
-    case default: { // includes Snack meal type
+    default: { // includes Snack meal type
       calories_needed_ = 100;
     }
   }
