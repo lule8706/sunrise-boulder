@@ -1,4 +1,7 @@
-#include <string>
+#ifndef MEAL_HPP
+#define MEAL_HPP
+
+#include <iostream>
 #include <vector>
 
 enum class MealType {Breakfast, Lunch, Dinner, Snack};
@@ -22,7 +25,7 @@ public:
     @param calories_needed Amount of calories meal should have.
     @return Foodless Meal of type meal_type with calories_needed expected calories.
   */
-  Meal (MealType meal_type, unsigned calories_needed);
+  Meal (const MealType &meal_type, const unsigned &calories_needed);
 
   /**
     Instantiates foodless Meal of type meal_type with default number of calories for given meal type.
@@ -30,7 +33,7 @@ public:
     @param meal_type Type of meal (breakfast, lunch, dinner, snack).
     @return Foodless Meal of type meal_type with default number of calories for given meal type.
   */
-  Meal (MealType meal_type);
+  Meal (const MealType &meal_type);
 
   /**
     Default constructor, instantiates a zero calorie foodless snack.
@@ -42,5 +45,77 @@ public:
   /**
     Class destructor, clears all dynamically allocated memory of instance of class.
   */
-  virtual ~Meal ();
+  //virtual ~Meal ();
+
+  /**
+    Returns type of Meal object.
+
+    @return Type of Meal object.
+  */
+  MealType get_meal_type () { return meal_type_; } const
+
+  /**
+    Returns expected calories for meal.
+
+    @return Expected calories for meal.
+  */
+  unsigned get_calories_needed () { return calories_needed_; } const
+
+  /**
+    Returns vector of food items in meal.
+
+    @return Vector of food items in meal.
+  */
+  std::vector<FoodItem> get_food () { return food_; } const
+
+  /**
+    Sets meal_type_ field to meal_type.
+
+    @param meal_type Meal type to set meal_type_ field to.
+  */
+  void set_meal_type (const MealType &meal_type) { meal_type_ = meal_type; }
+
+  /**
+    Sets calories_needed_ field to calories_needed.
+
+    @param calories_needed Expected calories to set calories_needed_ field to.
+  */
+  void set_calories_needed (const unsigned &calories_needed) { calories_needed_ = calories_needed; }
+
+  /**
+    Sets food_ field to food.
+
+    @param food Vector of food items to set food_ field to.
+  */
+  void set_food (const std::vector<FoodItem> &food) { food_ = food; }
 };
+
+namespace {
+  /**
+    Outputs meal type to output stream.
+
+    @param os Output stream.
+    @param meal_type Meal type to be output as string.
+    @return Output stream.
+  */
+  std::ostream& operator<< (std::ostream& os, const MealType &meal_type) {
+    switch (meal_type) {
+      case MealType::Breakfast: {
+        os << "Breakfast";
+      } break;
+      case MealType::Lunch: {
+        os << "Lunch";
+      } break;
+      case MealType::Dinner: {
+        os << "Dinner";
+      } break;
+      default: { // includes Snack meal type
+        os << "Snack";
+      }
+    }
+
+    return os;
+  }
+}
+
+#endif // MEAL_HPP

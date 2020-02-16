@@ -8,6 +8,8 @@
 #include "Meal.hpp"
 
 int main(int argc, char const *argv[]) {
-  /* code */
+  Meal test;
+
+  std::cout << test.get_meal_type() << ' ' << test.get_calories_needed() << std::endl;
   return 0;
 }
