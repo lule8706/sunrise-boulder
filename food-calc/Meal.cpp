@@ -1,11 +1,11 @@
 #include "Meal.hpp"
 
-Meal::Meal (MealType meal_type, unsigned calories_needed):
-meal_type_(meal_type),
-calories_needed_(calories_needed) {}
+Meal::Meal (const MealType &meal_type, const unsigned &calories_needed):
+meal_type_ (meal_type),
+calories_needed_ (calories_needed) {}
 
-Meal::Meal (MealType meal_type):
-meal_type_(meal_type) {
+Meal::Meal (const MealType &meal_type):
+meal_type_ (meal_type) {
   switch (meal_type) { // assigns default amount of calories for meal based on meal type
     case MealType::Breakfast: {
       calories_needed_ = 600;
@@ -21,3 +21,6 @@ meal_type_(meal_type) {
     }
   }
 }
+
+Meal::Meal ():
+Meal(MealType::Snack) {}
