@@ -1,7 +1,7 @@
 #ifndef MEAL_HPP
 #define MEAL_HPP
 
-#include <iostream>
+#include <string>
 #include <vector>
 
 enum class MealType {Breakfast, Lunch, Dinner, Snack};
@@ -10,6 +10,44 @@ struct FoodItem {
   std::string name;
   std::string cals; // later versions of program could take more nutrition facts into account
 };
+
+// Helper functions:
+namespace {
+  /**
+    Converts meal type into string.
+
+    @param meal_type Meal type to be converted to stream.
+    @return Meal type converted to string.
+  */
+  std::string MealStringify (const MealType &meal_type) {
+    switch (meal_type) {
+      case MealType::Breakfast: {
+        return "Breakfast";
+      } break;
+      case MealType::Lunch: {
+        return "Lunch";
+      } break;
+      case MealType::Dinner: {
+        return "Dinner";
+      } break;
+      default: { // includes Snack meal type
+        return "Snack";
+      }
+    }
+  }
+  /**
+    Outputs meal type to output stream.
+
+    @param os Output stream.
+    @param meal_type Meal type to be output as string.
+    @return Output stream.
+  */
+  std::ostream& operator<< (std::ostream& os, const MealType &meal_type) {
+    os << MealStringify(meal_type);
+
+    return os;
+  }
+}
 
 class Meal {
 private:
@@ -89,33 +127,5 @@ public:
   */
   void set_food (const std::vector<FoodItem> &food) { food_ = food; }
 };
-
-namespace {
-  /**
-    Outputs meal type to output stream.
-
-    @param os Output stream.
-    @param meal_type Meal type to be output as string.
-    @return Output stream.
-  */
-  std::ostream& operator<< (std::ostream& os, const MealType &meal_type) {
-    switch (meal_type) {
-      case MealType::Breakfast: {
-        os << "Breakfast";
-      } break;
-      case MealType::Lunch: {
-        os << "Lunch";
-      } break;
-      case MealType::Dinner: {
-        os << "Dinner";
-      } break;
-      default: { // includes Snack meal type
-        os << "Snack";
-      }
-    }
-
-    return os;
-  }
-}
 
 #endif // MEAL_HPP
