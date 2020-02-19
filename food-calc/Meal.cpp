@@ -23,4 +23,4 @@ meal_type_ (meal_type) {
 }
 
 Meal::Meal ():
-Meal(MealType::Snack) {}
+Meal(MealType::Snack, 0) {}
