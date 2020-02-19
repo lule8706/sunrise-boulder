@@ -8,7 +8,8 @@ enum class MealType {Breakfast, Lunch, Dinner, Snack};
 
 struct FoodItem {
   std::string name;
-  std::string cals; // later versions of program could take more nutrition facts into account
+  int cals_per_serv; // later versions of program could take more nutrition facts into account
+  double prop; // proportion of meal
 };
 
 // Helper functions:
