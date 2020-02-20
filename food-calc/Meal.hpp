@@ -58,6 +58,8 @@ private:
   std::vector<FoodItem> food_;
 
 public:
+  // Constructors:
+
   /**
     Instantiates foodless Meal of type meal_type with calories_needed expected calories.
 
@@ -82,10 +84,14 @@ public:
   */
   Meal ();
 
+  // Destructor:
+
   /**
     Class destructor, clears all dynamically allocated memory of instance of class.
   */
   //virtual ~Meal ();
+
+  // Getters:
 
   /**
     Returns type of Meal object.
@@ -108,6 +114,8 @@ public:
   */
   std::vector<FoodItem> get_food () { return food_; } const
 
+  // Setters:
+
   /**
     Sets meal_type_ field to meal_type.
 
@@ -129,6 +137,8 @@ public:
   */
   void set_food (const std::vector<FoodItem> &food) { food_ = food; }
 
+  // Methods:
+
   // Operators:
 
   /**
@@ -139,6 +149,15 @@ public:
     @return The input stream.
   */
   friend std::istream& operator>> (std::istream& is, Meal &meal);
+
+  /**
+    Inserts information about meal in CSV format into output stream.
+
+    @param os Output stream.
+    @param meal Variable containing information to be output.
+    @return The output stream.
+  */
+  friend std::ostream& operator<< (std::ostream& os, const Meal &meal);
 };
 
 #endif // MEAL_HPP
