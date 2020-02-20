@@ -36,6 +36,7 @@ namespace {
       }
     }
   }
+
   /**
     Outputs meal type to output stream.
 
@@ -127,6 +128,17 @@ public:
     @param food Vector of food items to set food_ field to.
   */
   void set_food (const std::vector<FoodItem> &food) { food_ = food; }
+
+  // Operators:
+
+  /**
+    Extracts information about meal from CSV format input stream.
+
+    @param is CSV format input stream.
+    @param meal Variable that collects information from input stream.
+    @return The input stream.
+  */
+  friend std::istream& operator>> (std::istream& is, Meal &meal);
 };
 
 #endif // MEAL_HPP
