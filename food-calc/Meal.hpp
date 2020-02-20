@@ -38,6 +38,15 @@ namespace {
   }
 
   /**
+    Takes in meal type from input string.
+
+    @param is Input stream.
+    @param meal_type Meal type variable to be set by input stream.
+    @return Input stream.
+  */
+  std::istream& operator>> (std::istream& is, MealType &meal_type);
+
+  /**
     Outputs meal type to output stream.
 
     @param os Output stream.
