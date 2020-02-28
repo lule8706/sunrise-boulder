@@ -49,6 +49,16 @@ namespace {
 
     getline(is, input, ',');
 
+    if (input == "Breakfast") {
+      meal_type = MealType::Breakfast;
+    } else if (input == "Lunch") {
+      meal_type = MealType::Lunch;
+    } else if (input == "Dinner") {
+      meal_type = MealType::Dinner;
+    } else {
+      meal_type = MealType::Snack;
+    }
+
     return is;
   }
 
